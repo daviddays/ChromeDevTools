@@ -150,6 +150,7 @@ namespace MasterDevs.ChromeDevTools.Protocol.Chrome
 			public const string StopLoading = "Page.stopLoading";
 			public const string GetNavigationHistory = "Page.getNavigationHistory";
 			public const string NavigateToHistoryEntry = "Page.navigateToHistoryEntry";
+			public const string InternalNavigationEvent = "Page.navigatedWithinDocument";
 			public const string GetCookies = "Page.getCookies";
 			public const string DeleteCookie = "Page.deleteCookie";
 			public const string GetResourceTree = "Page.getResourceTree";

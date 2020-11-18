@@ -21,7 +21,7 @@ namespace MasterDevs.ChromeDevTools.Sample
 
                 // STEP 1 - Run Chrome
                 var chromeProcessFactory = new ChromeProcessFactory(new StubbornDirectoryCleaner());
-                using (var chromeProcess = chromeProcessFactory.Create(9222, true))
+                using (var chromeProcess = chromeProcessFactory.Create(9222, false))
                 {
                     // STEP 2 - Create a debugging session
                     var sessionInfo = (await chromeProcess.GetSessionInfo()).LastOrDefault();
@@ -41,7 +41,7 @@ namespace MasterDevs.ChromeDevTools.Sample
 
                     var navigateResponse = await chromeSession.SendAsync(new NavigateCommand
                     {
-                        Url = "http://www.google.com"
+                        Url = "https://www.google.com"
                     });
                     Console.WriteLine("NavigateResponse: " + navigateResponse.Id);
 
