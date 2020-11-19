@@ -7,8 +7,8 @@
         <ProjectGuid>{905BD9DB-2F10-43C1-A411-772D96C2C7E3}</ProjectGuid>
         <OutputType>Exe</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>MasterDevs.ChromeDevTools.CustomEvents</RootNamespace>
-        <AssemblyName>MasterDevs.ChromeDevTools.CustomEvents</AssemblyName>
+        <RootNamespace>MasterDevs.ChromeDevTools.Messages</RootNamespace>
+        <AssemblyName>MasterDevs.ChromeDevTools.Messages</AssemblyName>
         <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -38,8 +38,15 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ChromeMessageSession.cs" />
+        <Compile Include="CustomMethodTypeMap.cs" />
+        <Compile Include="CustomSessionFactory.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Protocol\Chrome\AddBindingCommand.cs" />
+        <Compile Include="Protocol\Chrome\AddBindingCommandResponse.cs" />
+        <Compile Include="Protocol\Chrome\BindingCalledEvent.cs" />
+        <Compile Include="Protocol\Chrome\ProtocolName.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <ItemGroup>
