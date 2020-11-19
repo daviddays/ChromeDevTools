@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using MasterDevs.ChromeDevTools.Protocol.Chrome.Network;
 
 namespace MasterDevs.ChromeDevTools.Messages {
 		public class CustomMethodTypeMap : IMethodTypeMap
@@ -22,7 +23,7 @@ namespace MasterDevs.ChromeDevTools.Messages {
 
         private void LoadMethodTypeMap(string alias)
         {
-            var assemblyLocal = typeof(MethodTypeMap).GetTypeInfo().Assembly;
+            var assemblyLocal = typeof(CustomMethodTypeMap).GetTypeInfo().Assembly;
 			var assemblyDLL = typeof(MasterDevs.ChromeDevTools.MethodTypeMap).GetTypeInfo().Assembly;
 
 			var assemblyTypes = new List<Type>();
@@ -39,15 +40,15 @@ namespace MasterDevs.ChromeDevTools.Messages {
             {
                 if (!type.GetTypeInfo().IsClass) continue;
 
-				if (
-					string.IsNullOrWhiteSpace(type.Namespace)
-					|| (
-						!type.Namespace.StartsWith(string.Format("MasterDevs.ChromeDevTools.Protocol.{0}", alias))
-						&& !type.Namespace.StartsWith(string.Format("MasterDevs.ChromeDevTools.Messages.Protocol.{0}", alias))
-					)
-				) {
-					continue;
-				}
+
+                if (string.IsNullOrWhiteSpace(type.Namespace)) {
+                    continue;
+                };
+                bool isCore = type.Namespace.StartsWith(string.Format("MasterDevs.ChromeDevTools.Protocol.{0}", alias));
+                bool isExt = type.Namespace.StartsWith(string.Format("MasterDevs.ChromeDevTools.Messages.Protocol.{0}", alias));
+                if (!isCore && !isExt) {
+                    continue;
+                }
 
                 if (type.Name.EndsWith("CommandResponse"))
                 {
